@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Tablero de indicadores OKR/KPI SSOMA del contrato CC-141 - Salfa Montajes - CODELCO El Teniente.">
+<meta name="color-scheme" content="light dark">
+<style>
+:root{padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px)}
+html,body{margin:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif; font-size:14px; background:#f6f5f2}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>Excelencia SSOMA CC-141</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#f6f5f2; --surface:#fffefc; --surface-2:#f0eee9;
+  --ink:#1c1b19; --ink-2:#55524c; --ink-3:#847f76;
+  --line:#e2ded6; --line-strong:#cfc9bf;
+  --marca:#c02218;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100;
+  --ok:#0ca30c; --warn:#b07500; --bad:#d03b3b;
+  --ok-bg:#e7f5e7; --warn-bg:#faf0d9; --bad-bg:#fae9e9;
+  --sombra:0 1px 2px rgba(28,27,25,.06);
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#141413; --surface:#1e1e1c; --surface-2:#282825;
+    --ink:#f5f3ef; --ink-2:#bdb8ae; --ink-3:#8d887f;
+    --line:#33322e; --line-strong:#47453f;
+    --marca:#e8564a;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+    --ok:#3cb93c; --warn:#e0a423; --bad:#e46b6b;
+    --ok-bg:#16301b; --warn-bg:#332a13; --bad-bg:#361d1d;
+    --sombra:0 1px 2px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#141413; --surface:#1e1e1c; --surface-2:#282825;
+  --ink:#f5f3ef; --ink-2:#bdb8ae; --ink-3:#8d887f;
+  --line:#33322e; --line-strong:#47453f;
+  --marca:#e8564a;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+  --ok:#3cb93c; --warn:#e0a423; --bad:#e46b6b;
+  --ok-bg:#16301b; --warn-bg:#332a13; --bad-bg:#361d1d;
+  --sombra:0 1px 2px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.cifra,.eyebrow{font-family:Archivo,"Arial Narrow",Arial,sans-serif}
+.envoltura{max-width:1180px; margin:0 auto; padding-inline:16px; padding-block:0 56px}
+.eyebrow{
+  font-size:11px; font-weight:600; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--ink-3); margin:0 0 10px
+}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- encabezado ---------- */
+header.tope{
+  position:sticky; top:env(safe-area-inset-top,0px); z-index:30;
+  background:var(--surface); border-bottom:1px solid var(--line);
+}
+header.tope .fila{
+  max-width:1180px; margin:0 auto; padding:12px 16px;
+  display:flex; flex-wrap:wrap; gap:12px 20px; align-items:center; justify-content:space-between;
+}
+.marca-bloque{display:flex; align-items:center; gap:12px; min-width:0}
+.marca-barra{width:4px; align-self:stretch; min-height:36px; background:var(--marca); border-radius:2px}
+.marca-bloque h1{font-size:17px; margin:0; letter-spacing:-.01em}
+.marca-bloque p{margin:2px 0 0; font-size:12px; color:var(--ink-3)}
+.sello{
+  margin:5px 0 0; font-size:11.5px; color:var(--ink-3);
+  display:flex; align-items:center; gap:6px; font-variant-numeric:tabular-nums;
+}
+.sello .latido{width:7px; height:7px; border-radius:50%; background:var(--ok); flex:none}
+.sello.viejo .latido{background:var(--warn)}
+.sello b{color:var(--ink-2); font-weight:600}
+.selector{display:flex; gap:4px; background:var(--surface-2); padding:4px; border-radius:999px; flex-wrap:wrap}
+.selector button{
+  font:inherit; font-size:13px; font-weight:500; border:0; cursor:pointer;
+  background:transparent; color:var(--ink-2); padding:6px 14px; border-radius:999px;
+}
+.selector button[aria-pressed="true"]{background:var(--surface); color:var(--ink); box-shadow:var(--sombra); font-weight:600}
+.selector button:focus-visible,.chip:focus-visible,.enlace:focus-visible{outline:2px solid var(--marca); outline-offset:2px}
+
+/* ---------- panorama ---------- */
+.panorama{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:16px; margin-top:24px}
+.tarjeta{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:20px}
+.nota{display:flex; flex-direction:column; gap:14px}
+.nota-cifra{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap}
+.cifra{font-size:clamp(46px,9vw,68px); font-weight:700; line-height:.95; letter-spacing:-.03em}
+.delta{font-size:14px; font-weight:600; padding:3px 9px; border-radius:999px}
+.delta.sube{color:var(--ok); background:var(--ok-bg)}
+.delta.baja{color:var(--bad); background:var(--bad-bg)}
+.barra-meta{position:relative; height:12px; background:var(--surface-2); border-radius:6px; overflow:visible}
+.barra-meta .relleno{position:absolute; inset:0 auto 0 0; border-radius:6px 4px 4px 6px}
+.barra-meta .marca-meta{position:absolute; top:-5px; bottom:-5px; width:2px; background:var(--ink-2)}
+.pie-barra{display:flex; justify-content:space-between; font-size:12px; color:var(--ink-3)}
+.lectura{font-size:14px; color:var(--ink-2); margin:0}
+.lectura strong{color:var(--ink)}
+.conteos{display:flex; gap:8px; flex-wrap:wrap}
+.conteo{display:flex; align-items:center; gap:7px; font-size:13px; font-weight:500; padding:5px 11px; border-radius:999px; border:1px solid var(--line)}
+.punto{width:9px; height:9px; border-radius:50%; flex:none}
+
+.focos{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.foco{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:14px 16px; display:flex; flex-direction:column; gap:9px}
+.foco h3{margin:0; font-size:13px; font-weight:600; letter-spacing:.01em; display:flex; align-items:center; gap:8px; color:var(--ink-2)}
+.pastilla{width:10px; height:10px; border-radius:3px; flex:none}
+.foco .valor{font-family:Archivo,Arial,sans-serif; font-size:30px; font-weight:700; line-height:1; letter-spacing:-.02em}
+.foco .valor small{font-size:13px; font-weight:500; color:var(--ink-3); margin-left:7px; letter-spacing:0}
+.riel{height:6px; border-radius:3px; background:var(--surface-2); overflow:hidden}
+.riel span{display:block; height:100%; border-radius:3px}
+
+/* ---------- secciones ---------- */
+section{margin-top:40px}
+.cabecera-sec{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:14px}
+.cabecera-sec h2{margin:0; font-size:19px; letter-spacing:-.01em}
+.cabecera-sec p{margin:4px 0 0; font-size:13px; color:var(--ink-3); max-width:62ch}
+.leyenda{display:flex; gap:14px; flex-wrap:wrap; font-size:12px; color:var(--ink-2)}
+.leyenda span{display:flex; align-items:center; gap:6px}
+.lienzo{width:100%; height:auto; display:block; overflow:visible}
+.graf{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:18px 18px 12px}
+.dos-graf{display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:16px}
+
+/* ---------- tabla ---------- */
+.chips{display:flex; gap:7px; flex-wrap:wrap}
+.chip{
+  font:inherit; font-size:12.5px; font-weight:500; cursor:pointer; padding:5px 12px;
+  border-radius:999px; border:1px solid var(--line-strong); background:var(--surface); color:var(--ink-2);
+  display:flex; align-items:center; gap:7px;
+}
+.chip[aria-pressed="true"]{background:var(--ink); color:var(--ground); border-color:var(--ink)}
+.caja-tabla{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); overflow-x:auto}
+table{border-collapse:collapse; width:100%; min-width:720px; font-size:13.5px}
+th,td{text-align:left; padding:10px 14px; border-bottom:1px solid var(--line); vertical-align:middle}
+thead th{
+  position:sticky; top:0; background:var(--surface-2); font-size:11px; font-weight:600;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); white-space:nowrap
+}
+tbody tr:last-child td{border-bottom:0}
+tr.grupo td{background:var(--surface-2); font-weight:600; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-2)}
+td.der,th.der{text-align:right}
+.nombre-kpi{font-weight:500}
+.nombre-kpi small{display:block; font-size:11.5px; color:var(--ink-3); font-weight:400}
+.barra-logro{position:relative; width:104px; height:8px; border-radius:4px; background:var(--surface-2)}
+.barra-logro span{position:absolute; inset:0 auto 0 0; border-radius:4px}
+.estado{display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; padding:3px 9px; border-radius:6px; white-space:nowrap}
+.estado.v{color:var(--ok); background:var(--ok-bg)}
+.estado.a{color:var(--warn); background:var(--warn-bg)}
+.estado.r{color:var(--bad); background:var(--bad-bg)}
+.tira{display:flex; gap:3px}
+.tira i{
+  width:22px; height:18px; border-radius:4px; font-style:normal; font-size:10px; font-weight:600;
+  display:flex; align-items:center; justify-content:center; color:#fff;
+}
+.tira i.sin{background:var(--surface-2); color:var(--ink-3)}
+
+/* ---------- plan ---------- */
+.plan{display:grid; grid-template-columns:repeat(auto-fill,minmax(310px,1fr)); gap:12px}
+.accion{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:16px; display:flex; flex-direction:column; gap:9px}
+.accion .cab{display:flex; justify-content:space-between; gap:12px; align-items:flex-start}
+.accion h3{margin:0; font-size:14.5px; letter-spacing:-.005em}
+.accion .kpi-ref{font-size:11.5px; color:var(--ink-3); margin-top:3px}
+.impacto{font-family:Archivo,Arial,sans-serif; font-weight:700; font-size:20px; line-height:1; text-align:right; white-space:nowrap}
+.impacto small{display:block; font-size:10px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); margin-top:3px}
+.accion p{margin:0; font-size:13px; color:var(--ink-2)}
+.meta-accion{display:flex; gap:8px; flex-wrap:wrap; font-size:11.5px; color:var(--ink-3); border-top:1px solid var(--line); padding-top:9px}
+.meta-accion b{color:var(--ink-2); font-weight:600}
+
+/* ---------- tooltip ---------- */
+#tip{
+  position:fixed; z-index:60; pointer-events:none; opacity:0; transition:opacity .12s;
+  background:var(--surface); color:var(--ink); border:1px solid var(--line-strong);
+  border-radius:8px; padding:9px 11px; font-size:12.5px; box-shadow:0 6px 18px rgba(0,0,0,.14);
+  max-width:230px;
+}
+#tip b{display:block; font-size:12px; margin-bottom:3px}
+#tip .fila-tip{display:flex; align-items:center; gap:7px; justify-content:space-between}
+
+footer{margin-top:44px; padding-top:18px; border-top:1px solid var(--line); font-size:12.5px; color:var(--ink-3)}
+footer p{margin:0 0 6px}
+.enlace{color:var(--ink-2)}
+
+@media (max-width:860px){
+  .panorama,.dos-graf{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .focos{grid-template-columns:1fr}
+  .cifra{font-size:52px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="tope">
+  <div class="fila">
+    <div class="marca-bloque">
+      <div class="marca-barra" aria-hidden="true"></div>
+      <div>
+        <h1>Excelencia SSOMA · CC-141</h1>
+        <p id="sub-obra"></p>
+        <p class="sello"><i class="latido" aria-hidden="true"></i><span id="sello-txt"></span></p>
+      </div>
+    </div>
+    <div class="selector" role="group" aria-label="Período" id="sel-mes"></div>
+  </div>
+</header>
+
+<div class="envoltura">
+
+  <section class="panorama" style="margin-top:22px" aria-labelledby="t-panorama">
+    <h2 id="t-panorama" class="sr-only" hidden>Panorama</h2>
+    <div class="tarjeta nota">
+      <p class="eyebrow" id="et-periodo">Nota global del período</p>
+      <div class="nota-cifra">
+        <div class="cifra num" id="nota-valor">—</div>
+        <div id="nota-delta"></div>
+      </div>
+      <div>
+        <div class="barra-meta" id="nota-barra">
+          <div class="relleno" id="nota-relleno" style="width:0"></div>
+          <div class="marca-meta" style="left:95%"></div>
+        </div>
+        <div class="pie-barra"><span>0 %</span><span>meta 95 %</span><span>100 %</span></div>
+      </div>
+      <p class="lectura" id="lectura"></p>
+      <div class="conteos" id="conteos"></div>
+    </div>
+    <div class="focos" id="focos"></div>
+  </section>
+
+  <section aria-labelledby="t-evolucion">
+    <div class="cabecera-sec">
+      <div>
+        <p class="eyebrow">Evolución</p>
+        <h2 id="t-evolucion">Cumplimiento mensual por foco</h2>
+        <p>Cada foco suma 100 % de su ponderación; la nota global es el promedio de los cuatro.</p>
+      </div>
+      <div class="leyenda" id="leyenda-focos"></div>
+    </div>
+    <div class="graf"><svg id="g-evolucion" class="lienzo" role="img" aria-label="Cumplimiento mensual por foco"></svg></div>
+  </section>
+
+  <section aria-labelledby="t-indicadores">
+    <div class="cabecera-sec">
+      <div>
+        <p class="eyebrow">Semáforo</p>
+        <h2 id="t-indicadores">Los 25 indicadores</h2>
+        <p>Logro = resultado ponderado ÷ ponderación. Verde ≥ 95 %, ámbar 60–95 %, rojo &lt; 60 %.</p>
+      </div>
+      <div class="chips" id="chips-foco"></div>
+    </div>
+    <div class="caja-tabla">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Indicador</th>
+            <th scope="col">Meta</th>
+            <th scope="col">Real</th>
+            <th scope="col" class="der">Pond.</th>
+            <th scope="col">Logro</th>
+            <th scope="col">Estado</th>
+            <th scope="col">J · A · S</th>
+            <th scope="col" class="der">Puntos perdidos</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpo-tabla"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-puntos">
+    <div class="cabecera-sec">
+      <div>
+        <p class="eyebrow">Brechas</p>
+        <h2 id="t-puntos">Dónde se pierden los puntos</h2>
+        <p id="sub-puntos"></p>
+      </div>
+    </div>
+    <div class="graf"><svg id="g-puntos" class="lienzo" role="img" aria-label="Puntos de excelencia perdidos por indicador"></svg></div>
+  </section>
+
+  <section aria-labelledby="t-plan">
+    <div class="cabecera-sec">
+      <div>
+        <p class="eyebrow">Plan de acción</p>
+        <h2 id="t-plan">Qué hacer primero</h2>
+        <p>Indicadores bajo meta, ordenados por los puntos de nota global que devuelve cada uno.</p>
+      </div>
+    </div>
+    <div class="plan" id="plan"></div>
+  </section>
+
+  <footer>
+    <p><b>Fuente:</b> Matriz de OKR - KPI 2026, hoja «Planilla Control» · Contrato CC-141 · <span id="pie-generado"></span></p>
+    <p>Los resultados ponderados son los que calcula la matriz. El promedio del período considera solo los meses con dotación cargada.</p>
+    <p>Salfa Montajes S.A. · CODELCO División El Teniente · Proyecto Andes Norte · Uso interno.</p>
+  </footer>
+</div>
+
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script id="datos-kpi" type="application/json">{"contrato":"CC-141","empresa":"Salfa Montajes S.A.","obra":"Obras Tempranas · Sistema de Transporte de Mineral · DET","generado":"23-09-2026 07:12","focos":[{"id":"AT","nombre":"Alertas Tempranas","color":"#D3281F"},{"id":"GP","nombre":"Gestión Preventiva","color":"#F26B21"},{"id":"AC","nombre":"Aprendizaje Continuo","color":"#5B8DEF"},{"id":"EG","nombre":"Excelencia en la Gestión","color":"#2E8B57"}],"meses":[{"mesNum":7,"mes":"Julio","dotacion":450,"lmgCentral":2,"lmgObra":2,"excelencia":0.892599,"focos":{"AT":0.925,"GP":0.845397,"AC":0.8,"EG":1},"kpis":[{"id":"rep_total","foco":"AT","nombre":"Reportabilidad total","meta":0.2,"metaTexto":">20%","herramienta":"SAI","formato":"pct","real":0.306667,"realTexto":null,"num":138,"den":450,"pond":0.1,"res":0.1,"logro":1.0,"accion":"Reactivar la reportabilidad en terreno","descripcion":"Cuota diaria de reportes por supervisor y recordatorio en charla de inicio de turno; seguimiento del avance en el tablero SAI.","responsable":"Línea de mando · SSOMA","frecuencia":"Diaria"},{"id":"hap","foco":"AT","nombre":"Hallazgos de alto potencial (HAP)","meta":0.1,"metaTexto":">10%","herramienta":"SAI","formato":"pct","real":0.133333,"realTexto":null,"num":60,"den":450,"pond":0.3,"res":0.3,"logro":1.0,"accion":"Campaña de Hallazgos de Alto Potencial","descripcion":"Foco en condiciones de alto potencial asociadas a controles críticos; revisión semanal de calidad del reporte con la supervisión.","responsable":"Prevención de Riesgos","frecuencia":"Semanal"},{"id":"txv","foco":"AT","nombre":"Tarjetas por la Vida (TxV)","meta":0.05,"metaTexto":">5%","herramienta":"SAI","formato":"pct","real":0.057778,"realTexto":null,"num":26,"den":450,"pond":0.3,"res":0.3,"logro":1.0,"accion":"Relanzamiento de Tarjetas por la Vida","descripcion":"Reparto de talonarios por frente y reconocimiento visible a quien reporta; meta por cuadrilla comunicada en la charla de 5 minutos.","responsable":"Supervisión de área","frecuencia":"Diaria"},{"id":"lmg","foco":"AT","nombre":"Actividades LMG Central","meta":1,"metaTexto":"100%","herramienta":"SAI","formato":"pct","real":0.75,"realTexto":null,"num":3,"den":4,"pond":0.3,"res":0.225,"logro":0.75,"accion":"Agenda de actividades LMG Central","descripcion":"Calendarizar y registrar en SAI las visitas comprometidas de la línea de mando central; confirmar reporte cargado dentro de 24 h de realizada la actividad.","responsable":"Administración de contrato","frecuencia":"Mensual"},{"id":"ad_paes","foco":"GP","nombre":"Adhesión PAES","meta":1,"metaTexto":"100%","herramienta":"PAES","formato":"pct","real":0.719,"realTexto":null,"num":null,"den":null,"pond":0.05,"res":0.03595,"logro":0.719,"accion":"Cierre de adhesión al PAES","descripcion":"Levantar los ítems sin adhesión y comprometer fecha con cada responsable de programa.","responsable":"SSOMA","frecuencia":"Mensual"},{"id":"cu_paes","foco":"GP","nombre":"Cumplimiento PAES","meta":0.95,"metaTexto":">95%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.15,"res":0.15,"logro":1.0,"accion":"Recuperación del cumplimiento PAES","descripcion":"Reprogramar las actividades PAES no ejecutadas del mes y verificar respaldo cargado; control de avance semanal por responsable.","responsable":"SSOMA · Línea de mando","frecuencia":"Semanal"},{"id":"cc_paes","foco":"GP","nombre":"Actividades controles críticos PAES","meta":0.3,"metaTexto":">30%","herramienta":"PAES","formato":"pct","real":0.221,"realTexto":null,"num":null,"den":null,"pond":0.15,"res":0.1105,"logro":0.736667,"accion":"Refuerzo de actividades de controles críticos","descripcion":"Asegurar la ejecución y respaldo de las verificaciones de controles críticos planificadas.","responsable":"Prevención de Riesgos","frecuencia":"Semanal"},{"id":"ad_cphs","foco":"GP","nombre":"Adhesión CPHS al PAES","meta":1,"metaTexto":"100%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":1,"den":1,"pond":0.05,"res":0.05,"logro":1.0,"accion":"Adhesión del CPHS al PAES","descripcion":"Formalizar el compromiso del comité con las actividades del programa y dejar acta.","responsable":"CPHS · SSOMA","frecuencia":"Mensual"},{"id":"cu_cphs","foco":"GP","nombre":"Cumplimiento CPHS al PAES","meta":0.95,"metaTexto":">95%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.1,"res":0.1,"logro":1.0,"accion":"Cumplimiento del programa CPHS","descripcion":"Reagendar las actividades del comité pendientes y respaldar con acta y registro fotográfico.","responsable":"CPHS","frecuencia":"Mensual"},{"id":"gesco_seg","foco":"GP","nombre":"GESCO Seguridad","meta":0.9,"metaTexto":">90%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.05,"res":0.05,"logro":1.0,"accion":"Carga mensual GESCO Seguridad","descripcion":"Completar y cargar la evaluación GESCO de seguridad del mes dentro del plazo.","responsable":"SSOMA","frecuencia":"Mensual"},{"id":"gesco_so","foco":"GP","nombre":"GESCO Salud Ocupacional","meta":0.9,"metaTexto":">90%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.05,"res":0.05,"logro":1.0,"accion":"Carga mensual GESCO Salud Ocupacional","descripcion":"Completar y cargar la evaluación GESCO de salud ocupacional del mes.","responsable":"SSOMA Salud Ocupacional","frecuencia":"Mensual"},{"id":"gesco_ma","foco":"GP","nombre":"GESCO Medio Ambiente","meta":0.9,"metaTexto":">90%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.05,"res":0.05,"logro":1.0,"accion":"Carga mensual GESCO Medio Ambiente","descripcion":"Completar y cargar la evaluación GESCO de medio ambiente del mes.","responsable":"SSOMA Medio Ambiente","frecuencia":"Mensual"},{"id":"ad_sim","foco":"GP","nombre":"Adhesión simulacro documental","meta":1,"metaTexto":"100%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.05,"res":0.05,"logro":1.0,"accion":"Adhesión al simulacro documental","descripcion":"Confirmar participación de la obra en el simulacro documental del período.","responsable":"Emergencias · SSOMA","frecuencia":"Según programa"},{"id":"cu_sim","foco":"GP","nombre":"Cumplimiento simulacro documental","meta":0.95,"metaTexto":">95%","herramienta":"PAES","formato":"pct","real":0.65,"realTexto":null,"num":null,"den":null,"pond":0.05,"res":0.034211,"logro":0.684211,"accion":"Ejecución del simulacro documental","descripcion":"Realizar el simulacro y cargar el informe con evaluación y oportunidades de mejora.","responsable":"Emergencias · SSOMA","frecuencia":"Según programa"},{"id":"alc_drog","foco":"GP","nombre":"Plan de alcohol y drogas","meta":0.95,"metaTexto":">95%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.1,"res":0.1,"logro":1.0,"accion":"Plan de alcohol y drogas","descripcion":"Completar el muestreo comprometido del mes y respaldar resultados.","responsable":"SSOMA · RR.HH.","frecuencia":"Mensual"},{"id":"verano","foco":"GP","nombre":"Campaña de verano seguro","meta":0.95,"metaTexto":">95%","herramienta":"CVS","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.05,"res":0.05,"logro":1.0,"accion":"Campaña de verano seguro","descripcion":"Ejecutar las actividades pendientes de la campaña y respaldar la difusión.","responsable":"SSOMA","frecuencia":"Según programa"},{"id":"ssoma360","foco":"GP","nombre":"Usabilidad SSOMA 360","meta":0.95,"metaTexto":">95%","herramienta":"SSOMA 360","formato":"pct","real":0.14,"realTexto":null,"num":null,"den":null,"pond":0.1,"res":0.014737,"logro":0.147368,"accion":"Activación de usuarios SSOMA 360","descripcion":"Inducción breve por cuadrilla, apoyo en la instalación de la app y meta de usuarios activos por frente con seguimiento semanal.","responsable":"SSOMA · Administración de contrato","frecuencia":"Semanal"},{"id":"capac","foco":"AC","nombre":"Cumplimiento plan de capacitación","meta":1,"metaTexto":"100%","herramienta":null,"formato":"pct","real":null,"realTexto":"#DIV/0!","num":null,"den":null,"pond":0.2,"res":0,"logro":0.0,"accion":"Ejecución y registro del plan de capacitación","descripcion":"Cargar inscritos y aprobados del mes en la plataforma y reprogramar los cursos no dictados.","responsable":"Capacitación · RR.HH.","frecuencia":"Mensual"},{"id":"iap_sai","foco":"AC","nombre":"Reportes de IAP cerrados en SAI","meta":1,"metaTexto":"100%","herramienta":null,"formato":"pct","real":null,"realTexto":null,"num":0,"den":0,"pond":0.25,"res":0.25,"logro":1.0,"accion":"Cierre de reportes IAP en SAI","descripcion":"Asignar responsable y fecha a cada reporte abierto; ninguno sobre 30 días sin cierre.","responsable":"Prevención de Riesgos","frecuencia":"Semanal"},{"id":"iap_ces","foco":"AC","nombre":"IAP con aprendizajes en CES / GT","meta":1,"metaTexto":"100%","herramienta":null,"formato":"pct","real":null,"realTexto":null,"num":0,"den":0,"pond":0.25,"res":0.25,"logro":1.0,"accion":"Aprendizajes de IAP al CES / GT","descripcion":"Llevar cada IAP investigado al comité y dejar registrado el aprendizaje difundido.","responsable":"SSOMA · Línea de mando","frecuencia":"Mensual"},{"id":"precur","foco":"AC","nombre":"Repetición de precursores","meta":0,"metaTexto":"0","herramienta":null,"formato":"int","real":null,"realTexto":null,"num":null,"den":null,"pond":0.3,"res":0.3,"logro":1.0,"accion":"Control de repetición de precursores","descripcion":"Revisar precursores repetidos y verificar eficacia de las medidas ya implementadas.","responsable":"Prevención de Riesgos","frecuencia":"Mensual"},{"id":"cultura","foco":"EG","nombre":"Cultura de seguridad","meta":2,"metaTexto":"> a 2 atributos","herramienta":"SGI","formato":"int","real":2,"realTexto":null,"num":null,"den":null,"pond":0.3,"res":0.3,"logro":1.0,"accion":"Atributos de cultura de seguridad","descripcion":"Trabajar los atributos comprometidos del período con la línea de mando.","responsable":"Administración de contrato","frecuencia":"Mensual"},{"id":"cert_cphs","foco":"EG","nombre":"Certificación CPHS (oro)","meta":1,"metaTexto":"100 certificado ORO","herramienta":"SGI","formato":"pct","real":1,"realTexto":null,"num":1,"den":1,"pond":0.3,"res":0.3,"logro":1.0,"accion":"Certificación del CPHS en oro","descripcion":"Completar los requisitos pendientes del proceso de certificación del comité.","responsable":"CPHS · SSOMA","frecuencia":"Según programa"},{"id":"iso","foco":"EG","nombre":"Certificación SGI ISO 14.001 / 45.001","meta":1,"metaTexto":"100%","herramienta":"SGI","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.2,"res":0.2,"logro":1.0,"accion":"Mantención de la certificación SGI","descripcion":"Cerrar hallazgos de auditoría ISO 14.001 / 45.001 dentro de plazo.","responsable":"SGI","frecuencia":"Según programa"},{"id":"pec","foco":"EG","nombre":"Certificación PEC de excelencia","meta":1,"metaTexto":"100%","herramienta":"SGI","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.2,"res":0.2,"logro":1.0,"accion":"Certificación PEC de excelencia","descripcion":"Cerrar los requisitos pendientes del programa PEC.","responsable":"SSOMA","frecuencia":"Según programa"}]},{"mesNum":8,"mes":"Agosto","dotacion":448,"lmgCentral":2,"lmgObra":2,"excelencia":0.977184,"focos":{"AT":1,"GP":0.908737,"AC":1,"EG":1},"kpis":[{"id":"rep_total","foco":"AT","nombre":"Reportabilidad total","meta":0.2,"metaTexto":">20%","herramienta":"SAI","formato":"pct","real":0.357143,"realTexto":null,"num":160,"den":448,"pond":0.1,"res":0.1,"logro":1.0,"accion":"Reactivar la reportabilidad en terreno","descripcion":"Cuota diaria de reportes por supervisor y recordatorio en charla de inicio de turno; seguimiento del avance en el tablero SAI.","responsable":"Línea de mando · SSOMA","frecuencia":"Diaria"},{"id":"hap","foco":"AT","nombre":"Hallazgos de alto potencial (HAP)","meta":0.1,"metaTexto":">10%","herramienta":"SAI","formato":"pct","real":0.158482,"realTexto":null,"num":71,"den":448,"pond":0.3,"res":0.3,"logro":1.0,"accion":"Campaña de Hallazgos de Alto Potencial","descripcion":"Foco en condiciones de alto potencial asociadas a controles críticos; revisión semanal de calidad del reporte con la supervisión.","responsable":"Prevención de Riesgos","frecuencia":"Semanal"},{"id":"txv","foco":"AT","nombre":"Tarjetas por la Vida (TxV)","meta":0.05,"metaTexto":">5%","herramienta":"SAI","formato":"pct","real":0.055804,"realTexto":null,"num":25,"den":448,"pond":0.3,"res":0.3,"logro":1.0,"accion":"Relanzamiento de Tarjetas por la Vida","descripcion":"Reparto de talonarios por frente y reconocimiento visible a quien reporta; meta por cuadrilla comunicada en la charla de 5 minutos.","responsable":"Supervisión de área","frecuencia":"Diaria"},{"id":"lmg","foco":"AT","nombre":"Actividades LMG Central","meta":1,"metaTexto":"100%","herramienta":"SAI","formato":"pct","real":1,"realTexto":null,"num":4,"den":4,"pond":0.3,"res":0.3,"logro":1.0,"accion":"Agenda de actividades LMG Central","descripcion":"Calendarizar y registrar en SAI las visitas comprometidas de la línea de mando central; confirmar reporte cargado dentro de 24 h de realizada la actividad.","responsable":"Administración de contrato","frecuencia":"Mensual"},{"id":"ad_paes","foco":"GP","nombre":"Adhesión PAES","meta":1,"metaTexto":"100%","herramienta":"PAES","formato":"pct","real":0.88,"realTexto":null,"num":null,"den":null,"pond":0.05,"res":0.044,"logro":0.88,"accion":"Cierre de adhesión al PAES","descripcion":"Levantar los ítems sin adhesión y comprometer fecha con cada responsable de programa.","responsable":"SSOMA","frecuencia":"Mensual"},{"id":"cu_paes","foco":"GP","nombre":"Cumplimiento PAES","meta":0.95,"metaTexto":">95%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.15,"res":0.15,"logro":1.0,"accion":"Recuperación del cumplimiento PAES","descripcion":"Reprogramar las actividades PAES no ejecutadas del mes y verificar respaldo cargado; control de avance semanal por responsable.","responsable":"SSOMA · Línea de mando","frecuencia":"Semanal"},{"id":"cc_paes","foco":"GP","nombre":"Actividades controles críticos PAES","meta":0.3,"metaTexto":">30%","herramienta":"PAES","formato":"pct","real":0.3,"realTexto":null,"num":null,"den":null,"pond":0.15,"res":0.15,"logro":1.0,"accion":"Refuerzo de actividades de controles críticos","descripcion":"Asegurar la ejecución y respaldo de las verificaciones de controles críticos planificadas.","responsable":"Prevención de Riesgos","frecuencia":"Semanal"},{"id":"ad_cphs","foco":"GP","nombre":"Adhesión CPHS al PAES","meta":1,"metaTexto":"100%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":1,"den":1,"pond":0.05,"res":0.05,"logro":1.0,"accion":"Adhesión del CPHS al PAES","descripcion":"Formalizar el compromiso del comité con las actividades del programa y dejar acta.","responsable":"CPHS · SSOMA","frecuencia":"Mensual"},{"id":"cu_cphs","foco":"GP","nombre":"Cumplimiento CPHS al PAES","meta":0.95,"metaTexto":">95%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.1,"res":0.1,"logro":1.0,"accion":"Cumplimiento del programa CPHS","descripcion":"Reagendar las actividades del comité pendientes y respaldar con acta y registro fotográfico.","responsable":"CPHS","frecuencia":"Mensual"},{"id":"gesco_seg","foco":"GP","nombre":"GESCO Seguridad","meta":0.9,"metaTexto":">90%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.05,"res":0.05,"logro":1.0,"accion":"Carga mensual GESCO Seguridad","descripcion":"Completar y cargar la evaluación GESCO de seguridad del mes dentro del plazo.","responsable":"SSOMA","frecuencia":"Mensual"},{"id":"gesco_so","foco":"GP","nombre":"GESCO Salud Ocupacional","meta":0.9,"metaTexto":">90%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.05,"res":0.05,"logro":1.0,"accion":"Carga mensual GESCO Salud Ocupacional","descripcion":"Completar y cargar la evaluación GESCO de salud ocupacional del mes.","responsable":"SSOMA Salud Ocupacional","frecuencia":"Mensual"},{"id":"gesco_ma","foco":"GP","nombre":"GESCO Medio Ambiente","meta":0.9,"metaTexto":">90%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.05,"res":0.05,"logro":1.0,"accion":"Carga mensual GESCO Medio Ambiente","descripcion":"Completar y cargar la evaluación GESCO de medio ambiente del mes.","responsable":"SSOMA Medio Ambiente","frecuencia":"Mensual"},{"id":"ad_sim","foco":"GP","nombre":"Adhesión simulacro documental","meta":1,"metaTexto":"100%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.05,"res":0.05,"logro":1.0,"accion":"Adhesión al simulacro documental","descripcion":"Confirmar participación de la obra en el simulacro documental del período.","responsable":"Emergencias · SSOMA","frecuencia":"Según programa"},{"id":"cu_sim","foco":"GP","nombre":"Cumplimiento simulacro documental","meta":0.95,"metaTexto":">95%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.05,"res":0.05,"logro":1.0,"accion":"Ejecución del simulacro documental","descripcion":"Realizar el simulacro y cargar el informe con evaluación y oportunidades de mejora.","responsable":"Emergencias · SSOMA","frecuencia":"Según programa"},{"id":"alc_drog","foco":"GP","nombre":"Plan de alcohol y drogas","meta":0.95,"metaTexto":">95%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.1,"res":0.1,"logro":1.0,"accion":"Plan de alcohol y drogas","descripcion":"Completar el muestreo comprometido del mes y respaldar resultados.","responsable":"SSOMA · RR.HH.","frecuencia":"Mensual"},{"id":"verano","foco":"GP","nombre":"Campaña de verano seguro","meta":0.95,"metaTexto":">95%","herramienta":"CVS","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.05,"res":0.05,"logro":1.0,"accion":"Campaña de verano seguro","descripcion":"Ejecutar las actividades pendientes de la campaña y respaldar la difusión.","responsable":"SSOMA","frecuencia":"Según programa"},{"id":"ssoma360","foco":"GP","nombre":"Usabilidad SSOMA 360","meta":0.95,"metaTexto":">95%","herramienta":"SSOMA 360","formato":"pct","real":0.14,"realTexto":null,"num":null,"den":null,"pond":0.1,"res":0.014737,"logro":0.147368,"accion":"Activación de usuarios SSOMA 360","descripcion":"Inducción breve por cuadrilla, apoyo en la instalación de la app y meta de usuarios activos por frente con seguimiento semanal.","responsable":"SSOMA · Administración de contrato","frecuencia":"Semanal"},{"id":"capac","foco":"AC","nombre":"Cumplimiento plan de capacitación","meta":1,"metaTexto":"100%","herramienta":null,"formato":"pct","real":1,"realTexto":null,"num":0.15,"den":0.15,"pond":0.2,"res":0.2,"logro":1.0,"accion":"Ejecución y registro del plan de capacitación","descripcion":"Cargar inscritos y aprobados del mes en la plataforma y reprogramar los cursos no dictados.","responsable":"Capacitación · RR.HH.","frecuencia":"Mensual"},{"id":"iap_sai","foco":"AC","nombre":"Reportes de IAP cerrados en SAI","meta":1,"metaTexto":"100%","herramienta":null,"formato":"pct","real":1.0,"realTexto":null,"num":1,"den":1,"pond":0.25,"res":0.25,"logro":1.0,"accion":"Cierre de reportes IAP en SAI","descripcion":"Asignar responsable y fecha a cada reporte abierto; ninguno sobre 30 días sin cierre.","responsable":"Prevención de Riesgos","frecuencia":"Semanal"},{"id":"iap_ces","foco":"AC","nombre":"IAP con aprendizajes en CES / GT","meta":1,"metaTexto":"100%","herramienta":null,"formato":"pct","real":0.0,"realTexto":null,"num":0,"den":1,"pond":0.25,"res":0.25,"logro":1.0,"accion":"Aprendizajes de IAP al CES / GT","descripcion":"Llevar cada IAP investigado al comité y dejar registrado el aprendizaje difundido.","responsable":"SSOMA · Línea de mando","frecuencia":"Mensual"},{"id":"precur","foco":"AC","nombre":"Repetición de precursores","meta":0,"metaTexto":"0","herramienta":null,"formato":"int","real":null,"realTexto":null,"num":null,"den":null,"pond":0.3,"res":0.3,"logro":1.0,"accion":"Control de repetición de precursores","descripcion":"Revisar precursores repetidos y verificar eficacia de las medidas ya implementadas.","responsable":"Prevención de Riesgos","frecuencia":"Mensual"},{"id":"cultura","foco":"EG","nombre":"Cultura de seguridad","meta":2,"metaTexto":"> a 2 atributos","herramienta":"SGI","formato":"int","real":2,"realTexto":null,"num":null,"den":null,"pond":0.3,"res":0.3,"logro":1.0,"accion":"Atributos de cultura de seguridad","descripcion":"Trabajar los atributos comprometidos del período con la línea de mando.","responsable":"Administración de contrato","frecuencia":"Mensual"},{"id":"cert_cphs","foco":"EG","nombre":"Certificación CPHS (oro)","meta":1,"metaTexto":"100 certificado ORO","herramienta":"SGI","formato":"pct","real":1,"realTexto":null,"num":1,"den":1,"pond":0.3,"res":0.3,"logro":1.0,"accion":"Certificación del CPHS en oro","descripcion":"Completar los requisitos pendientes del proceso de certificación del comité.","responsable":"CPHS · SSOMA","frecuencia":"Según programa"},{"id":"iso","foco":"EG","nombre":"Certificación SGI ISO 14.001 / 45.001","meta":1,"metaTexto":"100%","herramienta":"SGI","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.2,"res":0.2,"logro":1.0,"accion":"Mantención de la certificación SGI","descripcion":"Cerrar hallazgos de auditoría ISO 14.001 / 45.001 dentro de plazo.","responsable":"SGI","frecuencia":"Según programa"},{"id":"pec","foco":"EG","nombre":"Certificación PEC de excelencia","meta":1,"metaTexto":"100%","herramienta":"SGI","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.2,"res":0.2,"logro":1.0,"accion":"Certificación PEC de excelencia","descripcion":"Cerrar los requisitos pendientes del programa PEC.","responsable":"SSOMA","frecuencia":"Según programa"}]},{"mesNum":9,"mes":"Septiembre","dotacion":412,"lmgCentral":2,"lmgObra":2,"excelencia":0.838262,"focos":{"AT":0.647573,"GP":0.705474,"AC":1,"EG":1},"kpis":[{"id":"rep_total","foco":"AT","nombre":"Reportabilidad total","meta":0.2,"metaTexto":">20%","herramienta":"SAI","formato":"pct","real":0.259709,"realTexto":null,"num":107,"den":412,"pond":0.1,"res":0.1,"logro":1.0,"accion":"Reactivar la reportabilidad en terreno","descripcion":"Cuota diaria de reportes por supervisor y recordatorio en charla de inicio de turno; seguimiento del avance en el tablero SAI.","responsable":"Línea de mando · SSOMA","frecuencia":"Diaria"},{"id":"hap","foco":"AT","nombre":"Hallazgos de alto potencial (HAP)","meta":0.1,"metaTexto":">10%","herramienta":"SAI","formato":"pct","real":0.11165,"realTexto":null,"num":46,"den":412,"pond":0.3,"res":0.3,"logro":1.0,"accion":"Campaña de Hallazgos de Alto Potencial","descripcion":"Foco en condiciones de alto potencial asociadas a controles críticos; revisión semanal de calidad del reporte con la supervisión.","responsable":"Prevención de Riesgos","frecuencia":"Semanal"},{"id":"txv","foco":"AT","nombre":"Tarjetas por la Vida (TxV)","meta":0.05,"metaTexto":">5%","herramienta":"SAI","formato":"pct","real":0.041262,"realTexto":null,"num":17,"den":412,"pond":0.3,"res":0.247573,"logro":0.825243,"accion":"Relanzamiento de Tarjetas por la Vida","descripcion":"Reparto de talonarios por frente y reconocimiento visible a quien reporta; meta por cuadrilla comunicada en la charla de 5 minutos.","responsable":"Supervisión de área","frecuencia":"Diaria"},{"id":"lmg","foco":"AT","nombre":"Actividades LMG Central","meta":1,"metaTexto":"100%","herramienta":"SAI","formato":"pct","real":0,"realTexto":null,"num":null,"den":4,"pond":0.3,"res":0,"logro":0.0,"accion":"Agenda de actividades LMG Central","descripcion":"Calendarizar y registrar en SAI las visitas comprometidas de la línea de mando central; confirmar reporte cargado dentro de 24 h de realizada la actividad.","responsable":"Administración de contrato","frecuencia":"Mensual"},{"id":"ad_paes","foco":"GP","nombre":"Adhesión PAES","meta":1,"metaTexto":"100%","herramienta":"PAES","formato":"pct","real":0.92,"realTexto":null,"num":null,"den":null,"pond":0.05,"res":0.046,"logro":0.92,"accion":"Cierre de adhesión al PAES","descripcion":"Levantar los ítems sin adhesión y comprometer fecha con cada responsable de programa.","responsable":"SSOMA","frecuencia":"Mensual"},{"id":"cu_paes","foco":"GP","nombre":"Cumplimiento PAES","meta":0.95,"metaTexto":">95%","herramienta":"PAES","formato":"pct","real":0.6,"realTexto":null,"num":null,"den":null,"pond":0.15,"res":0.094737,"logro":0.631579,"accion":"Recuperación del cumplimiento PAES","descripcion":"Reprogramar las actividades PAES no ejecutadas del mes y verificar respaldo cargado; control de avance semanal por responsable.","responsable":"SSOMA · Línea de mando","frecuencia":"Semanal"},{"id":"cc_paes","foco":"GP","nombre":"Actividades controles críticos PAES","meta":0.3,"metaTexto":">30%","herramienta":"PAES","formato":"pct","real":0.347,"realTexto":null,"num":null,"den":null,"pond":0.15,"res":0.15,"logro":1.0,"accion":"Refuerzo de actividades de controles críticos","descripcion":"Asegurar la ejecución y respaldo de las verificaciones de controles críticos planificadas.","responsable":"Prevención de Riesgos","frecuencia":"Semanal"},{"id":"ad_cphs","foco":"GP","nombre":"Adhesión CPHS al PAES","meta":1,"metaTexto":"100%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":1,"den":1,"pond":0.05,"res":0.05,"logro":1.0,"accion":"Adhesión del CPHS al PAES","descripcion":"Formalizar el compromiso del comité con las actividades del programa y dejar acta.","responsable":"CPHS · SSOMA","frecuencia":"Mensual"},{"id":"cu_cphs","foco":"GP","nombre":"Cumplimiento CPHS al PAES","meta":0.95,"metaTexto":">95%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.1,"res":0.1,"logro":1.0,"accion":"Cumplimiento del programa CPHS","descripcion":"Reagendar las actividades del comité pendientes y respaldar con acta y registro fotográfico.","responsable":"CPHS","frecuencia":"Mensual"},{"id":"gesco_seg","foco":"GP","nombre":"GESCO Seguridad","meta":0.9,"metaTexto":">90%","herramienta":"PAES","formato":"pct","real":null,"realTexto":"Mensual","num":null,"den":null,"pond":0.05,"res":0,"logro":0.0,"accion":"Carga mensual GESCO Seguridad","descripcion":"Completar y cargar la evaluación GESCO de seguridad del mes dentro del plazo.","responsable":"SSOMA","frecuencia":"Mensual"},{"id":"gesco_so","foco":"GP","nombre":"GESCO Salud Ocupacional","meta":0.9,"metaTexto":">90%","herramienta":"PAES","formato":"pct","real":null,"realTexto":"Mensual","num":null,"den":null,"pond":0.05,"res":0,"logro":0.0,"accion":"Carga mensual GESCO Salud Ocupacional","descripcion":"Completar y cargar la evaluación GESCO de salud ocupacional del mes.","responsable":"SSOMA Salud Ocupacional","frecuencia":"Mensual"},{"id":"gesco_ma","foco":"GP","nombre":"GESCO Medio Ambiente","meta":0.9,"metaTexto":">90%","herramienta":"PAES","formato":"pct","real":null,"realTexto":"Mensual","num":null,"den":null,"pond":0.05,"res":0,"logro":0.0,"accion":"Carga mensual GESCO Medio Ambiente","descripcion":"Completar y cargar la evaluación GESCO de medio ambiente del mes.","responsable":"SSOMA Medio Ambiente","frecuencia":"Mensual"},{"id":"ad_sim","foco":"GP","nombre":"Adhesión simulacro documental","meta":1,"metaTexto":"100%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.05,"res":0.05,"logro":1.0,"accion":"Adhesión al simulacro documental","descripcion":"Confirmar participación de la obra en el simulacro documental del período.","responsable":"Emergencias · SSOMA","frecuencia":"Según programa"},{"id":"cu_sim","foco":"GP","nombre":"Cumplimiento simulacro documental","meta":0.95,"metaTexto":">95%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.05,"res":0.05,"logro":1.0,"accion":"Ejecución del simulacro documental","descripcion":"Realizar el simulacro y cargar el informe con evaluación y oportunidades de mejora.","responsable":"Emergencias · SSOMA","frecuencia":"Según programa"},{"id":"alc_drog","foco":"GP","nombre":"Plan de alcohol y drogas","meta":0.95,"metaTexto":">95%","herramienta":"PAES","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.1,"res":0.1,"logro":1.0,"accion":"Plan de alcohol y drogas","descripcion":"Completar el muestreo comprometido del mes y respaldar resultados.","responsable":"SSOMA · RR.HH.","frecuencia":"Mensual"},{"id":"verano","foco":"GP","nombre":"Campaña de verano seguro","meta":0.95,"metaTexto":">95%","herramienta":"CVS","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.05,"res":0.05,"logro":1.0,"accion":"Campaña de verano seguro","descripcion":"Ejecutar las actividades pendientes de la campaña y respaldar la difusión.","responsable":"SSOMA","frecuencia":"Según programa"},{"id":"ssoma360","foco":"GP","nombre":"Usabilidad SSOMA 360","meta":0.95,"metaTexto":">95%","herramienta":"SSOMA 360","formato":"pct","real":0.14,"realTexto":null,"num":null,"den":null,"pond":0.1,"res":0.014737,"logro":0.147368,"accion":"Activación de usuarios SSOMA 360","descripcion":"Inducción breve por cuadrilla, apoyo en la instalación de la app y meta de usuarios activos por frente con seguimiento semanal.","responsable":"SSOMA · Administración de contrato","frecuencia":"Semanal"},{"id":"capac","foco":"AC","nombre":"Cumplimiento plan de capacitación","meta":1,"metaTexto":"100%","herramienta":null,"formato":"pct","real":1,"realTexto":null,"num":1,"den":1,"pond":0.2,"res":0.2,"logro":1.0,"accion":"Ejecución y registro del plan de capacitación","descripcion":"Cargar inscritos y aprobados del mes en la plataforma y reprogramar los cursos no dictados.","responsable":"Capacitación · RR.HH.","frecuencia":"Mensual"},{"id":"iap_sai","foco":"AC","nombre":"Reportes de IAP cerrados en SAI","meta":1,"metaTexto":"100%","herramienta":null,"formato":"pct","real":null,"realTexto":null,"num":0,"den":0,"pond":0.25,"res":0.25,"logro":1.0,"accion":"Cierre de reportes IAP en SAI","descripcion":"Asignar responsable y fecha a cada reporte abierto; ninguno sobre 30 días sin cierre.","responsable":"Prevención de Riesgos","frecuencia":"Semanal"},{"id":"iap_ces","foco":"AC","nombre":"IAP con aprendizajes en CES / GT","meta":1,"metaTexto":"100%","herramienta":null,"formato":"pct","real":null,"realTexto":null,"num":0,"den":0,"pond":0.25,"res":0.25,"logro":1.0,"accion":"Aprendizajes de IAP al CES / GT","descripcion":"Llevar cada IAP investigado al comité y dejar registrado el aprendizaje difundido.","responsable":"SSOMA · Línea de mando","frecuencia":"Mensual"},{"id":"precur","foco":"AC","nombre":"Repetición de precursores","meta":0,"metaTexto":"0","herramienta":null,"formato":"int","real":0,"realTexto":null,"num":null,"den":null,"pond":0.3,"res":0.3,"logro":1.0,"accion":"Control de repetición de precursores","descripcion":"Revisar precursores repetidos y verificar eficacia de las medidas ya implementadas.","responsable":"Prevención de Riesgos","frecuencia":"Mensual"},{"id":"cultura","foco":"EG","nombre":"Cultura de seguridad","meta":2,"metaTexto":"> a 2 atributos","herramienta":"SGI","formato":"int","real":2,"realTexto":null,"num":null,"den":null,"pond":0.3,"res":0.3,"logro":1.0,"accion":"Atributos de cultura de seguridad","descripcion":"Trabajar los atributos comprometidos del período con la línea de mando.","responsable":"Administración de contrato","frecuencia":"Mensual"},{"id":"cert_cphs","foco":"EG","nombre":"Certificación CPHS (oro)","meta":1,"metaTexto":"100 certificado ORO","herramienta":"SGI","formato":"pct","real":1,"realTexto":null,"num":1,"den":1,"pond":0.3,"res":0.3,"logro":1.0,"accion":"Certificación del CPHS en oro","descripcion":"Completar los requisitos pendientes del proceso de certificación del comité.","responsable":"CPHS · SSOMA","frecuencia":"Según programa"},{"id":"iso","foco":"EG","nombre":"Certificación SGI ISO 14.001 / 45.001","meta":1,"metaTexto":"100%","herramienta":"SGI","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.2,"res":0.2,"logro":1.0,"accion":"Mantención de la certificación SGI","descripcion":"Cerrar hallazgos de auditoría ISO 14.001 / 45.001 dentro de plazo.","responsable":"SGI","frecuencia":"Según programa"},{"id":"pec","foco":"EG","nombre":"Certificación PEC de excelencia","meta":1,"metaTexto":"100%","herramienta":"SGI","formato":"pct","real":1,"realTexto":null,"num":null,"den":null,"pond":0.2,"res":0.2,"logro":1.0,"accion":"Certificación PEC de excelencia","descripcion":"Cerrar los requisitos pendientes del programa PEC.","responsable":"SSOMA","frecuencia":"Según programa"}]}]}</script>
+<script>
+(function(){
+"use strict";
+const D = JSON.parse(document.getElementById("datos-kpi").textContent);
+const MESES = D.meses;
+const FOCOS = D.focos;
+const SERIES = ["--s1","--s2","--s3","--s4"];
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const colorFoco = id => css(SERIES[FOCOS.findIndex(f => f.id === id)] || "--s1");
+const pct = (v,d=1) => v == null || isNaN(v) ? "—" : (v*100).toFixed(d).replace(".", ",") + " %";
+const pp  = v => (v*100).toFixed(2).replace(".", ",");
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+
+let periodo = MESES.length ? MESES[MESES.length-1].mesNum : 0;   // número de mes, 0 = promedio
+let focoSel = "todos";
+
+/* ---------- agregación ---------- */
+function mesDe(n){ return MESES.find(m => m.mesNum === n); }
+
+function vista(){
+  if (periodo !== 0){
+    const m = mesDe(periodo);
+    return {
+      etiqueta: m.mes, dotacion: m.dotacion, excelencia: m.excelencia,
+      focos: m.focos, kpis: m.kpis.map(k => Object.assign({}, k)), mes: m
+    };
+  }
+  const prom = arr => { const v = arr.filter(x => x != null && !isNaN(x)); return v.length ? v.reduce((a,b)=>a+b,0)/v.length : null; };
+  const kpis = MESES[0].kpis.map((base, i) => {
+    const filas = MESES.map(m => m.kpis[i]);
+    return Object.assign({}, base, {
+      real: prom(filas.map(f => f.real)),
+      pond: prom(filas.map(f => f.pond)),
+      res: prom(filas.map(f => f.res)),
+      logro: prom(filas.map(f => f.logro)),
+      realTexto: null
+    });
+  });
+  const focos = {};
+  FOCOS.forEach(f => focos[f.id] = prom(MESES.map(m => m.focos[f.id])));
+  return {
+    etiqueta: MESES.length + " meses", dotacion: prom(MESES.map(m => m.dotacion)),
+    excelencia: prom(MESES.map(m => m.excelencia)), focos, kpis, mes: null
+  };
+}
+function anterior(){
+  if (periodo === 0) return null;
+  const i = MESES.findIndex(m => m.mesNum === periodo);
+  return i > 0 ? MESES[i-1] : null;
+}
+function estado(l){ return l == null ? null : l >= 0.95 ? "v" : l >= 0.60 ? "a" : "r"; }
+const NOMBRE_ESTADO = {v:"Verde", a:"Ámbar", r:"Rojo"};
+const COLOR_ESTADO = {v:"--ok", a:"--warn", r:"--bad"};
+function puntos(k){ const p = (k.pond||0) - (k.res||0); return p > 0.00005 ? p/4 : 0; }
+
+/* ---------- tooltip ---------- */
+const tip = document.getElementById("tip");
+function mostrarTip(e, html){
+  tip.innerHTML = html; tip.style.opacity = "1";
+  const r = tip.getBoundingClientRect();
+  let x = e.clientX + 14, y = e.clientY - 10;
+  if (x + r.width > innerWidth - 8) x = e.clientX - r.width - 14;
+  if (y + r.height > innerHeight - 8) y = innerHeight - r.height - 8;
+  tip.style.left = Math.max(8,x) + "px"; tip.style.top = Math.max(8,y) + "px";
+}
+function ocultarTip(){ tip.style.opacity = "0"; }
+document.addEventListener("scroll", ocultarTip, {passive:true});
+
+/* ---------- encabezado ---------- */
+document.getElementById("sub-obra").textContent = D.obra;
+(function sello(){
+  const txt = document.getElementById("sello-txt");
+  const caja = txt.parentNode;
+  txt.innerHTML = "Actualizado <b>" + D.generado + "</b> · datos de la matriz en Drive";
+  // marca en ámbar si la última actualización tiene más de 48 h
+  const m = /^(\d{2})-(\d{2})-(\d{4})(?:\s+(\d{2}):(\d{2}))?/.exec(D.generado || "");
+  if (m){
+    const f = new Date(+m[3], +m[2]-1, +m[1], +(m[4]||0), +(m[5]||0));
+    const horas = (Date.now() - f.getTime()) / 36e5;
+    if (horas > 48) caja.classList.add("viejo");
+  }
+})();
+document.getElementById("pie-generado").textContent = "actualizado el " + D.generado + " (hora de Chile)";
+
+const selMes = document.getElementById("sel-mes");
+function pintarSelector(){
+  selMes.innerHTML = "";
+  const ops = MESES.map(m => ({v:m.mesNum, t:m.mes})).concat([{v:0, t:"Promedio"}]);
+  ops.forEach(o => {
+    const b = document.createElement("button");
+    b.type = "button"; b.textContent = o.t;
+    b.setAttribute("aria-pressed", String(o.v === periodo));
+    b.addEventListener("click", () => { periodo = o.v; pintar(); });
+    selMes.appendChild(b);
+  });
+}
+
+/* ---------- panorama ---------- */
+function pintarPanorama(v){
+  const ant = anterior();
+  document.getElementById("et-periodo").textContent =
+    periodo === 0 ? "Promedio de " + MESES.length + " meses con datos · 2026" : "Nota global · " + v.etiqueta + " 2026";
+  document.getElementById("nota-valor").textContent = pct(v.excelencia);
+  const cont = document.getElementById("nota-delta");
+  cont.innerHTML = "";
+  if (ant){
+    const d = v.excelencia - ant.excelencia;
+    const s = document.createElement("span");
+    s.className = "delta " + (d >= 0 ? "sube" : "baja");
+    s.textContent = (d >= 0 ? "▲ +" : "▼ ") + pp(d) + " pp vs " + ant.mes.toLowerCase();
+    cont.appendChild(s);
+  }
+  const rel = document.getElementById("nota-relleno");
+  rel.style.width = Math.max(0, Math.min(100, (v.excelencia||0)*100)) + "%";
+  rel.style.background = css(COLOR_ESTADO[estado(v.excelencia)] || "--ink-3");
+
+  const orden = FOCOS.slice().sort((a,b) => (v.focos[a.id]||0) - (v.focos[b.id]||0));
+  const bajo = v.kpis.filter(k => (k.logro ?? 0) < 0.95).length;
+  document.getElementById("lectura").innerHTML =
+    "Dotación " + Math.round(v.dotacion) + " personas. Foco más alto: <strong>" + orden[orden.length-1].nombre +
+    "</strong> (" + pct(v.focos[orden[orden.length-1].id],0) + "); foco más bajo: <strong>" + orden[0].nombre +
+    "</strong> (" + pct(v.focos[orden[0].id],0) + "). " + bajo + " de 25 indicadores bajo meta.";
+
+  const cuenta = {v:0,a:0,r:0};
+  v.kpis.forEach(k => { const e = estado(k.logro); if (e) cuenta[e]++; });
+  const cc = document.getElementById("conteos");
+  cc.innerHTML = "";
+  ["v","a","r"].forEach(e => {
+    const d = document.createElement("span");
+    d.className = "conteo";
+    d.innerHTML = '<i class="punto" style="background:' + css(COLOR_ESTADO[e]) + '"></i>' +
+                  cuenta[e] + " en " + NOMBRE_ESTADO[e].toLowerCase();
+    cc.appendChild(d);
+  });
+
+  const cf = document.getElementById("focos");
+  cf.innerHTML = "";
+  FOCOS.forEach(f => {
+    const val = v.focos[f.id];
+    const c = colorFoco(f.id);
+    const d = document.createElement("article");
+    d.className = "foco";
+    let delta = "";
+    if (ant && ant.focos[f.id] != null){
+      const dd = val - ant.focos[f.id];
+      delta = '<small>' + (dd >= 0 ? "+" : "") + pp(dd) + " pp</small>";
+    }
+    const bajoF = v.kpis.filter(k => k.foco === f.id && (k.logro ?? 0) < 0.95).length;
+    const totalF = v.kpis.filter(k => k.foco === f.id).length;
+    d.innerHTML =
+      '<h3><i class="pastilla" style="background:' + c + '"></i>' + f.nombre + '</h3>' +
+      '<div class="valor num">' + pct(val,0) + delta + '</div>' +
+      '<div class="riel"><span style="width:' + Math.min(100,(val||0)*100) + '%;background:' + c + '"></span></div>' +
+      '<div style="font-size:12px;color:var(--ink-3)">' + bajoF + ' de ' + totalF + ' indicadores bajo meta</div>';
+    cf.appendChild(d);
+  });
+}
+
+/* ---------- gráfico de evolución ---------- */
+const SVGNS = "http://www.w3.org/2000/svg";
+function el(t, attrs, padre){
+  const n = document.createElementNS(SVGNS, t);
+  for (const k in attrs) n.setAttribute(k, attrs[k]);
+  if (padre) padre.appendChild(n);
+  return n;
+}
+function pintarEvolucion(){
+  const svg = document.getElementById("g-evolucion");
+  svg.innerHTML = "";
+  const ancho = Math.max(320, svg.clientWidth || svg.parentNode.clientWidth - 36);
+  const alto = ancho < 520 ? 300 : 260;
+  const m = {t:16, r:14, b:38, l:40};
+  svg.setAttribute("viewBox", "0 0 " + ancho + " " + alto);
+  svg.setAttribute("width", ancho); svg.setAttribute("height", alto);
+  const x0 = m.l, x1 = ancho - m.r, y0 = m.t, y1 = alto - m.b;
+  const Y = v => y1 - v * (y1 - y0);
+  const tinta2 = css("--ink-2"), tinta3 = css("--ink-3"), linea = css("--line");
+
+  [0,.25,.5,.75,1].forEach(v => {
+    el("line", {x1:x0, x2:x1, y1:Y(v), y2:Y(v), stroke:linea, "stroke-width":1}, svg);
+    el("text", {x:x0-8, y:Y(v)+4, "text-anchor":"end", fill:tinta3, "font-size":11}, svg)
+      .textContent = (v*100) + "%";
+  });
+  // referencia de meta 95 %
+  el("line", {x1:x0, x2:x1, y1:Y(.95), y2:Y(.95), stroke:tinta2, "stroke-width":1.5,
+              "stroke-dasharray":"5 4"}, svg);
+  el("text", {x:x1, y:Y(.95)-7, "text-anchor":"end", fill:tinta2, "font-size":11, "font-weight":600}, svg)
+    .textContent = "meta 95 %";
+
+  const grupoAncho = (x1 - x0) / MESES.length;
+  const barraAncho = Math.max(10, Math.min(46, (grupoAncho - 26) / FOCOS.length));
+  MESES.forEach((mes, i) => {
+    const cx = x0 + grupoAncho * (i + .5);
+    const inicio = cx - (barraAncho * FOCOS.length + 3 * (FOCOS.length - 1)) / 2;
+    FOCOS.forEach((f, j) => {
+      const val = mes.focos[f.id] || 0;
+      const x = inicio + j * (barraAncho + 3);
+      const h = Math.max(2, y1 - Y(val));
+      const r = el("rect", {x:x, y:Y(val), width:barraAncho, height:h, rx:4, ry:4,
+                            fill:colorFoco(f.id)}, svg);
+      r.style.cursor = "pointer";
+      const html = "<b>" + mes.mes + "</b><div class='fila-tip'><span>" + f.nombre +
+                   "</span><b style='color:" + colorFoco(f.id) + "'>" + pct(val) + "</b></div>";
+      r.addEventListener("mousemove", e => mostrarTip(e, html));
+      r.addEventListener("mouseleave", ocultarTip);
+    });
+    el("text", {x:cx, y:y1 + 18, "text-anchor":"middle", fill:tinta2, "font-size":12,
+                "font-weight": mes.mesNum === periodo ? 700 : 500}, svg).textContent = mes.mes;
+    el("text", {x:cx, y:y1 + 32, "text-anchor":"middle", fill:tinta3, "font-size":10.5}, svg)
+      .textContent = "nota " + pct(mes.excelencia, 0);
+  });
+
+  // línea de nota global
+  const pts = MESES.map((mes, i) => [x0 + grupoAncho * (i + .5), Y(mes.excelencia)]);
+  el("polyline", {points:pts.map(p => p.join(",")).join(" "), fill:"none",
+                  stroke:css("--ink"), "stroke-width":2, "stroke-linejoin":"round"}, svg);
+  pts.forEach((p, i) => {
+    el("circle", {cx:p[0], cy:p[1], r:5.5, fill:css("--surface"), stroke:css("--ink"), "stroke-width":2}, svg);
+    const c = el("circle", {cx:p[0], cy:p[1], r:12, fill:"transparent"}, svg);
+    const mes = MESES[i];
+    c.addEventListener("mousemove", e => mostrarTip(e,
+      "<b>" + mes.mes + "</b><div class='fila-tip'><span>Excelencia SSOMA</span><b>" +
+      pct(mes.excelencia) + "</b></div><div class='fila-tip'><span>Dotación</span><b>" + mes.dotacion + "</b></div>"));
+    c.addEventListener("mouseleave", ocultarTip);
+  });
+
+  const ley = document.getElementById("leyenda-focos");
+  ley.innerHTML = FOCOS.map(f =>
+    '<span><i class="pastilla" style="background:' + colorFoco(f.id) + '"></i>' + f.nombre + '</span>').join("") +
+    '<span><i class="pastilla" style="background:' + css("--ink") + ';border-radius:50%"></i>Nota global</span>';
+}
+
+/* ---------- gráfico de puntos perdidos ---------- */
+function pintarPuntos(v){
+  const svg = document.getElementById("g-puntos");
+  svg.innerHTML = "";
+  const datos = v.kpis.map(k => ({k, p:puntos(k)})).filter(d => d.p > 0)
+                      .sort((a,b) => b.p - a.p).slice(0, 10);
+  const sub = document.getElementById("sub-puntos");
+  const total = v.kpis.reduce((a,k) => a + puntos(k), 0);
+  sub.textContent = "Si todos los indicadores llegaran a meta, la nota del período subiría de " +
+    pct(v.excelencia,0) + " a " + pct((v.excelencia||0) + total, 0) + ".";
+  if (!datos.length){
+    svg.setAttribute("viewBox","0 0 400 60"); svg.setAttribute("height",60);
+    el("text",{x:8,y:34,fill:css("--ink-2"),"font-size":13},svg).textContent =
+      "Todos los indicadores del período están en meta.";
+    return;
+  }
+  const ancho = Math.max(320, svg.clientWidth || svg.parentNode.clientWidth - 36);
+  const anchoEtiqueta = ancho < 560 ? 132 : 220;
+  const filaAlto = 30, m = {t:8, r:54, b:22, l:anchoEtiqueta};
+  const alto = m.t + m.b + datos.length * filaAlto;
+  svg.setAttribute("viewBox", "0 0 " + ancho + " " + alto);
+  svg.setAttribute("width", ancho); svg.setAttribute("height", alto);
+  const x0 = m.l, x1 = ancho - m.r;
+  const max = datos[0].p;
+  const X = p => x0 + (p / max) * (x1 - x0);
+  const tinta2 = css("--ink-2"), tinta3 = css("--ink-3");
+
+  datos.forEach((d, i) => {
+    const y = m.t + i * filaAlto;
+    const c = colorFoco(d.k.foco);
+    const nombre = d.k.nombre.length > (ancho < 560 ? 22 : 34)
+      ? d.k.nombre.slice(0, ancho < 560 ? 21 : 33) + "…" : d.k.nombre;
+    el("text", {x:x0-10, y:y+15, "text-anchor":"end", fill:tinta2, "font-size":12}, svg).textContent = nombre;
+    const r = el("rect", {x:x0, y:y+3, width:Math.max(3, X(d.p)-x0), height:17, rx:4, ry:4, fill:c}, svg);
+    r.style.cursor = "pointer";
+    const html = "<b>" + d.k.nombre + "</b><div class='fila-tip'><span>Puntos perdidos</span><b>" + pp(d.p) +
+      " pp</b></div><div class='fila-tip'><span>Logro</span><b>" + pct(d.k.logro,0) +
+      "</b></div><div class='fila-tip'><span>Ponderación</span><b>" + pct(d.k.pond,0) + "</b></div>";
+    r.addEventListener("mousemove", e => mostrarTip(e, html));
+    r.addEventListener("mouseleave", ocultarTip);
+    el("text", {x:X(d.p)+8, y:y+16, fill:tinta2, "font-size":12, "font-weight":600}, svg).textContent = pp(d.p);
+  });
+  el("text", {x:x1, y:alto-6, "text-anchor":"end", fill:tinta3, "font-size":11}, svg)
+    .textContent = "puntos de nota global (pp)";
+}
+
+/* ---------- tabla ---------- */
+function pintarTabla(v){
+  const chips = document.getElementById("chips-foco");
+  if (!chips.childElementCount){
+    const ops = [{id:"todos", n:"Todos"}].concat(FOCOS.map(f => ({id:f.id, n:f.nombre})));
+    ops.forEach(o => {
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "chip";
+      b.innerHTML = (o.id === "todos" ? "" :
+        '<i class="pastilla" style="background:' + colorFoco(o.id) + '"></i>') + o.n;
+      b.addEventListener("click", () => { focoSel = o.id; pintar(); });
+      chips.appendChild(b);
+    });
+  }
+  Array.from(chips.children).forEach((b, i) => {
+    const id = i === 0 ? "todos" : FOCOS[i-1].id;
+    b.setAttribute("aria-pressed", String(id === focoSel));
+  });
+
+  const cuerpo = document.getElementById("cuerpo-tabla");
+  cuerpo.innerHTML = "";
+  FOCOS.forEach(f => {
+    if (focoSel !== "todos" && focoSel !== f.id) return;
+    const filas = v.kpis.filter(k => k.foco === f.id);
+    const tr = document.createElement("tr");
+    tr.className = "grupo";
+    tr.innerHTML = '<td colspan="8">' + f.nombre + ' · ' + pct(v.focos[f.id],0) + '</td>';
+    cuerpo.appendChild(tr);
+    filas.forEach(k => {
+      const e = estado(k.logro);
+      const txt = k.realTexto && k.realTexto.indexOf("#") !== 0 ? cap(k.realTexto.toLowerCase()) : null;
+      const real = k.real != null ? (k.formato === "int" ? String(Math.round(k.real)) : pct(k.real))
+                                  : (txt || "Sin dato");
+      const detalle = (k.num != null && k.den) ? (Math.round(k.num) + " de " + Math.round(k.den)) : "";
+      const tira = MESES.map(mes => {
+        const kk = mes.kpis.find(x => x.id === k.id);
+        const ee = estado(kk ? kk.logro : null);
+        return ee ? '<i style="background:' + css(COLOR_ESTADO[ee]) + '" title="' + mes.mes + ": " +
+                    pct(kk.logro,0) + '">' + mes.mes[0] + '</i>'
+                  : '<i class="sin">' + mes.mes[0] + '</i>';
+      }).join("");
+      const p = puntos(k);
+      const fila = document.createElement("tr");
+      fila.innerHTML =
+        '<td class="nombre-kpi">' + k.nombre + (k.herramienta ? '<small>' + k.herramienta + '</small>' : '') + '</td>' +
+        '<td class="num">' + (k.metaTexto || "—") + '</td>' +
+        '<td class="num">' + real + (detalle ? '<small style="display:block;font-size:11px;color:var(--ink-3)">' + detalle + '</small>' : '') + '</td>' +
+        '<td class="der num">' + pct(k.pond,0) + '</td>' +
+        '<td><div class="barra-logro" title="' + pct(k.logro,0) + '"><span style="width:' +
+           Math.min(100,(k.logro||0)*100) + '%;background:' + css(COLOR_ESTADO[e] || "--ink-3") + '"></span></div>' +
+           '<small style="font-size:11px;color:var(--ink-3)">' + pct(k.logro,0) + '</small></td>' +
+        '<td><span class="estado ' + (e||"") + '">' + (e ? NOMBRE_ESTADO[e] : "—") + '</span></td>' +
+        '<td><div class="tira">' + tira + '</div></td>' +
+        '<td class="der num">' + (p > 0 ? pp(p) : "—") + '</td>';
+      cuerpo.appendChild(fila);
+    });
+  });
+}
+
+/* ---------- plan de acción ---------- */
+function pintarPlan(v){
+  const cont = document.getElementById("plan");
+  cont.innerHTML = "";
+  const datos = v.kpis.map(k => ({k, p:puntos(k)}))
+    .filter(d => (d.k.logro ?? 0) < 0.95)
+    .sort((a,b) => b.p - a.p);
+  if (!datos.length){
+    cont.innerHTML = '<p style="color:var(--ink-2)">Sin indicadores bajo meta en el período.</p>';
+    return;
+  }
+  datos.forEach(d => {
+    const c = colorFoco(d.k.foco);
+    const e = estado(d.k.logro);
+    const a = document.createElement("article");
+    a.className = "accion";
+    a.innerHTML =
+      '<div class="cab"><div><h3>' + (d.k.accion || d.k.nombre) + '</h3>' +
+        '<div class="kpi-ref"><i class="pastilla" style="display:inline-block;background:' + c +
+        ';margin-right:6px"></i>' + d.k.nombre + ' · logro ' + pct(d.k.logro,0) + '</div></div>' +
+      '<div class="impacto num" style="color:' + css(COLOR_ESTADO[e] || "--ink") + '">' + pp(d.p) +
+        '<small>pp</small></div></div>' +
+      '<p>' + (d.k.descripcion || "") + '</p>' +
+      '<div class="meta-accion"><span><b>Responsable:</b> ' + (d.k.responsable || "—") + '</span>' +
+      '<span><b>Frecuencia:</b> ' + (d.k.frecuencia || "—") + '</span></div>';
+    cont.appendChild(a);
+  });
+}
+
+/* ---------- render ---------- */
+function pintar(){
+  const v = vista();
+  pintarSelector();
+  pintarPanorama(v);
+  pintarEvolucion();
+  pintarTabla(v);
+  pintarPuntos(v);
+  pintarPlan(v);
+}
+pintar();
+let t;
+addEventListener("resize", () => { clearTimeout(t); t = setTimeout(() => { pintarEvolucion(); pintarPuntos(vista()); }, 150); });
+const mq = matchMedia("(prefers-color-scheme: dark)");
+mq.addEventListener && mq.addEventListener("change", () => pintar());
+new MutationObserver(() => pintar()).observe(document.documentElement, {attributes:true, attributeFilter:["data-theme"]});
+})();
+</script>
+
+</body>
+</html>
